@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <my-capm></my-capm>
+        <my-capm></my-capm>
+        <capms></capms>
+    </div>
+    <div id="app2">
+        <my-capm></my-capm>
+        <my-capm></my-capm>
+        <!-- <capms></capms>   无法使用，这个是局部组件 -->
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        //创建组件构造器对象
+        const capm=Vue.extend({
+            template:`<div>
+                <h2>哈哈哈哈哈哈哈</h2>
+                </div>`
+        })
+        //注册组件（全局组件，意味着可以在多个vue实例中使用）
+        Vue.component('my-capm',capm);
+
+        //这是一个vue实例（一般真实项目中只有一个vue实例，学习：其实也可以多个）
+        const app=new Vue({
+            el:'#app',
+            data:{
+                message:"11"
+            },
+            components:{
+                //注册局部组件
+                capms:capm
+            }
+        })
+        const app2=new Vue({
+            el:'#app2',
+            data:{
+                message:"11"
+            }
+        })
+    </script>
+</body>
+</html>
